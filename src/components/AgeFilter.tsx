@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Baby, Sparkles, Rocket } from "lucide-react";
+import { Baby, Sparkles, Rocket, Star } from "lucide-react";
 
-export type AgeGroup = "3-5" | "6-8" | "9-10" | "all";
+export type AgeGroup = "3-4" | "5-6" | "7-8" | "9-10" | "all";
 
 interface AgeFilterProps {
   selectedAge: AgeGroup;
@@ -16,25 +16,32 @@ const ageGroups = [
     color: "primary",
   },
   {
-    value: "3-5" as AgeGroup,
+    value: "3-4" as AgeGroup,
     label: "Little Learners",
-    subtitle: "Ages 3-5",
+    subtitle: "Ages 3-4",
     icon: Baby,
     color: "secondary",
   },
   {
-    value: "6-8" as AgeGroup,
+    value: "5-6" as AgeGroup,
     label: "Young Explorers",
-    subtitle: "Ages 6-8",
-    icon: Sparkles,
+    subtitle: "Ages 5-6",
+    icon: Star,
     color: "accent",
   },
   {
-    value: "9-10" as AgeGroup,
+    value: "7-8" as AgeGroup,
     label: "Smart Kids",
+    subtitle: "Ages 7-8",
+    icon: Sparkles,
+    color: "primary",
+  },
+  {
+    value: "9-10" as AgeGroup,
+    label: "Math Masters",
     subtitle: "Ages 9-10",
     icon: Rocket,
-    color: "primary",
+    color: "secondary",
   },
 ];
 

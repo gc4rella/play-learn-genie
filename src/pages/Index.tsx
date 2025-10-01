@@ -1,84 +1,46 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { GameCard, type Game } from "@/components/GameCard";
 import { AgeFilter, type AgeGroup } from "@/components/AgeFilter";
 import { AIGameGenerator } from "@/components/AIGameGenerator";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
-import { toast } from "sonner";
+import { MINI_GAMES } from "@/games/registry";
 import heroImage from "@/assets/hero-bg.jpg";
 import alphabetGame from "@/assets/game-alphabet.jpg";
 import numbersGame from "@/assets/game-numbers.jpg";
 import shapesGame from "@/assets/game-shapes.jpg";
 
-const sampleGames: Game[] = [
-  {
-    id: "1",
-    title: "Alphabet Adventure",
-    description: "Learn letters through fun interactive games and songs!",
-    imageUrl: alphabetGame,
-    ageRange: "3-5",
-    difficulty: 2,
-    category: "Reading",
-  },
-  {
-    id: "2",
-    title: "Number Ninjas",
-    description: "Master counting and simple math with exciting challenges.",
-    imageUrl: numbersGame,
-    ageRange: "6-8",
-    difficulty: 3,
-    category: "Math",
-  },
-  {
-    id: "3",
-    title: "Shape Explorers",
-    description: "Discover shapes and patterns in a colorful world!",
-    imageUrl: shapesGame,
-    ageRange: "3-5",
-    difficulty: 1,
-    category: "Logic",
-  },
-  {
-    id: "4",
-    title: "Word Wizard",
-    description: "Build vocabulary and spelling skills through magical word games.",
-    imageUrl: alphabetGame,
-    ageRange: "6-8",
-    difficulty: 3,
-    category: "Reading",
-  },
-  {
-    id: "5",
-    title: "Math Master",
-    description: "Solve advanced math problems and become a calculation champion!",
-    imageUrl: numbersGame,
-    ageRange: "9-10",
-    difficulty: 5,
-    category: "Math",
-  },
-  {
-    id: "6",
-    title: "Pattern Puzzles",
-    description: "Train your brain with challenging pattern recognition games.",
-    imageUrl: shapesGame,
-    ageRange: "9-10",
-    difficulty: 4,
-    category: "Logic",
-  },
-];
-
 const Index = () => {
+  const navigate = useNavigate();
   const [selectedAge, setSelectedAge] = useState<AgeGroup>("all");
 
+  // Map mini games to display cards
+  const displayGames: Game[] = MINI_GAMES.map((game) => {
+    const imageMap: { [key: string]: string } = {
+      "3-4": alphabetGame,
+      "5-6": numbersGame,
+      "7-8": shapesGame,
+      "9-10": numbersGame,
+    };
+
+    return {
+      id: game.id,
+      title: game.name,
+      description: game.description,
+      imageUrl: imageMap[game.ageRange] || alphabetGame,
+      ageRange: game.ageRange,
+      difficulty: game.ageRange === "3-4" ? 1 : game.ageRange === "5-6" ? 2 : game.ageRange === "7-8" ? 3 : 4,
+      category: "Math & Logic",
+    };
+  });
+
   const filteredGames = selectedAge === "all" 
-    ? sampleGames 
-    : sampleGames.filter(game => game.ageRange === selectedAge);
+    ? displayGames 
+    : displayGames.filter(game => game.ageRange === selectedAge);
 
   const handlePlayGame = (gameId: string) => {
-    const game = sampleGames.find(g => g.id === gameId);
-    toast.success(`Starting ${game?.title}! 🎮`, {
-      description: "Game will load in a moment...",
-    });
+    navigate(`/play/${gameId}`);
   };
 
   return (
