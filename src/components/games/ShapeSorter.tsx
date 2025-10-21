@@ -50,36 +50,36 @@ export function ShapeSorter({ instance, onAnswer }: ShapeSorterProps) {
   };
 
   return (
-    <Card className="p-8 bg-gradient-card space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-4xl font-bold text-foreground">Shape Sorter!</h2>
-        <p className="text-2xl text-muted-foreground">
+    <Card className="p-4 sm:p-8 bg-gradient-card space-y-6 sm:space-y-8">
+      <div className="text-center space-y-3 sm:space-y-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Shape Sorter!</h2>
+        <p className="text-xl sm:text-2xl text-muted-foreground">
           Find the matching shape!
         </p>
       </div>
 
       {/* Target Shape */}
       <div className="max-w-md mx-auto">
-        <div className="text-center space-y-4">
-          <p className="text-xl font-semibold">Match this shape:</p>
-          <div className="inline-block p-8 bg-white dark:bg-gray-800 rounded-3xl border-8 border-primary/30 shadow-2xl">
-            {renderShape(targetShape, targetColor, 160)}
+        <div className="text-center space-y-3 sm:space-y-4">
+          <p className="text-lg sm:text-xl font-semibold">Match this shape:</p>
+          <div className="inline-block p-6 sm:p-8 bg-white dark:bg-gray-800 rounded-3xl border-4 sm:border-8 border-primary/30 shadow-2xl">
+            {renderShape(targetShape, targetColor, 140)}
           </div>
         </div>
       </div>
 
       {/* Shape Options */}
-      <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto">
         {options.map((shape) => (
           <button
             key={shape}
             onClick={() => onAnswer(shape)}
-            className="group p-8 bg-white dark:bg-gray-800 rounded-3xl border-4 border-gray-300 dark:border-gray-600 hover:border-primary hover:scale-110 transition-all shadow-lg"
+            className="group p-6 sm:p-8 bg-white dark:bg-gray-800 rounded-3xl border-4 border-gray-300 dark:border-gray-600 hover:border-primary hover:scale-105 active:scale-95 transition-all shadow-lg touch-manipulation"
           >
             <div className="flex items-center justify-center">
-              {renderShape(shape, "#6B7280", 120)}
+              {renderShape(shape, "#6B7280", 100)}
             </div>
-            <p className="mt-4 text-xl font-bold capitalize text-center group-hover:text-primary transition-colors">
+            <p className="mt-3 sm:mt-4 text-lg sm:text-xl font-bold capitalize text-center group-hover:text-primary transition-colors">
               {shape}
             </p>
           </button>

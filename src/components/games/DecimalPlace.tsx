@@ -22,21 +22,21 @@ export function DecimalPlace({ instance, onAnswer }: DecimalPlaceProps) {
   const targetPosition = getPosition(decimal);
 
   return (
-    <Card className="p-8 bg-gradient-card space-y-8">
-      <div className="text-center space-y-4">
-        <div className="flex items-center justify-center gap-3">
-          <Target className="h-10 w-10 text-primary" />
-          <h2 className="text-3xl font-bold text-foreground">Decimal Place!</h2>
+    <Card className="p-4 sm:p-8 bg-gradient-card space-y-6 sm:space-y-8">
+      <div className="text-center space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-center gap-2 sm:gap-3">
+          <Target className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Decimal Place!</h2>
         </div>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-base sm:text-lg text-muted-foreground">
           Where does this decimal belong on the number line?
         </p>
       </div>
 
       {/* Target Decimal */}
       <div className="text-center">
-        <div className="inline-block px-10 py-6 bg-primary text-primary-foreground rounded-2xl shadow-lg">
-          <p className="text-6xl font-bold font-mono">{decimal}</p>
+        <div className="inline-block px-6 py-4 sm:px-10 sm:py-6 bg-primary text-primary-foreground rounded-2xl shadow-lg">
+          <p className="text-4xl sm:text-6xl font-bold font-mono">{decimal}</p>
         </div>
       </div>
 
@@ -77,7 +77,7 @@ export function DecimalPlace({ instance, onAnswer }: DecimalPlaceProps) {
       </div>
 
       {/* Options */}
-      <div className="grid grid-cols-4 gap-4 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto">
         {options.map((option) => (
           <Button
             key={option}
@@ -87,7 +87,7 @@ export function DecimalPlace({ instance, onAnswer }: DecimalPlaceProps) {
             }}
             variant={selectedPosition === option ? "default" : "outline"}
             size="lg"
-            className="text-xl font-bold font-mono"
+            className="h-14 sm:h-16 text-lg sm:text-xl font-bold font-mono touch-manipulation"
           >
             {option.toFixed(1)}
           </Button>

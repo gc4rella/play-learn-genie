@@ -19,46 +19,46 @@ export function ColorMatch({ instance, onAnswer }: ColorMatchProps) {
   };
 
   return (
-    <Card className="p-8 bg-gradient-card space-y-8">
-      <div className="text-center space-y-4">
-        <div className="flex items-center justify-center gap-3">
-          <Palette className="h-12 w-12 text-primary" />
-          <h2 className="text-4xl font-bold text-foreground">Color Match!</h2>
+    <Card className="p-4 sm:p-8 bg-gradient-card space-y-6 sm:space-y-8">
+      <div className="text-center space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-center gap-2 sm:gap-3">
+          <Palette className="h-10 w-10 sm:h-12 sm:w-12 text-primary" />
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Color Match!</h2>
         </div>
-        <p className="text-2xl text-muted-foreground">
+        <p className="text-xl sm:text-2xl text-muted-foreground">
           What color is this?
         </p>
       </div>
 
       {/* Target Color Display */}
       <div className="max-w-md mx-auto">
-        <div className="text-center space-y-6">
-          <div className="inline-block p-10 bg-white dark:bg-gray-800 rounded-3xl border-8 border-primary/30 shadow-2xl">
+        <div className="text-center space-y-4 sm:space-y-6">
+          <div className="inline-block p-6 sm:p-10 bg-white dark:bg-gray-800 rounded-3xl border-4 sm:border-8 border-primary/30 shadow-2xl">
             <div
-              className="w-40 h-40 rounded-full border-8 border-white shadow-2xl flex items-center justify-center"
+              className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-6 sm:border-8 border-white shadow-2xl flex items-center justify-center"
               style={{ backgroundColor: targetHex }}
             >
-              <div className="text-7xl">{emoji}</div>
+              <div className="text-5xl sm:text-7xl">{emoji}</div>
             </div>
           </div>
-          <p className="text-2xl font-bold">What color is this?</p>
+          <p className="text-xl sm:text-2xl font-bold">What color is this?</p>
         </div>
       </div>
 
       {/* Color Options */}
-      <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto">
         {options.map((color) => (
           <button
             key={color}
             onClick={() => onAnswer(color)}
-            className="group relative p-6 bg-white dark:bg-gray-800 rounded-3xl border-4 border-gray-300 dark:border-gray-600 hover:border-primary hover:scale-110 transition-all shadow-lg"
+            className="group relative p-5 sm:p-6 bg-white dark:bg-gray-800 rounded-3xl border-4 border-gray-300 dark:border-gray-600 hover:border-primary hover:scale-105 active:scale-95 transition-all shadow-lg touch-manipulation"
           >
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
               <div
-                className="w-24 h-24 rounded-full border-4 border-white shadow-xl"
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-white shadow-xl"
                 style={{ backgroundColor: colorMap[color] }}
               />
-              <p className="text-2xl font-bold capitalize group-hover:text-primary transition-colors">
+              <p className="text-xl sm:text-2xl font-bold capitalize group-hover:text-primary transition-colors">
                 {color}
               </p>
             </div>

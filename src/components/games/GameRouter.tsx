@@ -68,41 +68,41 @@ export function GameRouter({ instance, onComplete, onExit }: GameRouterProps) {
 
   if (showResult) {
     return (
-      <Card className="p-12 bg-gradient-card text-center space-y-6">
+      <Card className="p-6 sm:p-12 bg-gradient-card text-center space-y-4 sm:space-y-6">
         {isCorrect ? (
           <>
             <div className="flex justify-center">
-              <Trophy className="h-24 w-24 text-accent animate-bounce" />
+              <Trophy className="h-16 w-16 sm:h-24 sm:w-24 text-accent animate-bounce" />
             </div>
-            <h2 className="text-4xl font-bold text-foreground">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
               Excellent Work! 🎉
             </h2>
-            <p className="text-2xl text-muted-foreground">
+            <p className="text-xl sm:text-2xl text-muted-foreground">
               You got it right!
             </p>
-            <div className="flex gap-2 justify-center">
+            <div className="flex gap-1 sm:gap-2 justify-center">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-8 w-8 fill-accent text-accent" />
+                <Star key={i} className="h-6 w-6 sm:h-8 sm:w-8 fill-accent text-accent" />
               ))}
             </div>
           </>
         ) : (
           <>
-            <div className="text-6xl mb-4">💪</div>
-            <h2 className="text-4xl font-bold text-foreground">
+            <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">💪</div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
               Keep Trying!
             </h2>
-            <p className="text-2xl text-muted-foreground">
+            <p className="text-xl sm:text-2xl text-muted-foreground">
               Practice makes perfect!
             </p>
           </>
         )}
 
-        <div className="flex gap-4 justify-center pt-4">
-          <Button onClick={handleContinue} size="lg" variant="default">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-3 sm:pt-4 max-w-md mx-auto">
+          <Button onClick={handleContinue} size="lg" variant="default" className="w-full sm:w-auto touch-manipulation">
             Next Challenge
           </Button>
-          <Button onClick={onExit} size="lg" variant="outline">
+          <Button onClick={onExit} size="lg" variant="outline" className="w-full sm:w-auto touch-manipulation">
             Back to Games
           </Button>
         </div>

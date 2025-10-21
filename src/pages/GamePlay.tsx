@@ -125,61 +125,61 @@ export default function GamePlay() {
   return (
     <div className="min-h-screen bg-background font-fredoka">
       {/* Header */}
-      <header className="bg-gradient-hero text-white py-4 px-4 shadow-lg">
+      <header className="bg-gradient-hero text-white py-3 sm:py-4 px-3 sm:px-4 shadow-lg">
         <div className="container mx-auto">
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
             <Button
               onClick={handleExit}
               variant="secondary"
               size="sm"
-              className="gap-2"
+              className="gap-1 sm:gap-2 h-9 sm:h-10 text-xs sm:text-sm px-2 sm:px-4"
             >
-              <ArrowLeft className="h-4 w-4" />
-              Back
+              <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden xs:inline">Back</span>
             </Button>
 
-            <div className="text-center">
-              <h1 className="text-2xl font-bold">{game.name}</h1>
-              <p className="text-sm opacity-90">Round {sessionCount + 1}</p>
+            <div className="text-center flex-1 px-2">
+              <h1 className="text-lg sm:text-2xl font-bold leading-tight">{game.name}</h1>
+              <p className="text-xs sm:text-sm opacity-90">Round {sessionCount + 1}</p>
             </div>
 
             <Button
               onClick={toggleTimer}
               variant={timerEnabled ? "destructive" : "secondary"}
               size="sm"
-              className="gap-2"
+              className="gap-1 sm:gap-2 h-9 sm:h-10 text-xs sm:text-sm px-2 sm:px-4"
             >
-              <Timer className="h-4 w-4" />
+              <Timer className="h-3 w-3 sm:h-4 sm:w-4" />
               {timerEnabled ? "Stop" : "Race"}
             </Button>
           </div>
 
           {/* Stats Bar */}
-          <div className="flex items-center justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full">
-              <Trophy className="h-4 w-4" />
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 lg:gap-6 text-xs sm:text-sm">
+            <div className="flex items-center gap-1 sm:gap-2 bg-white/10 px-2 sm:px-3 py-1 rounded-full">
+              <Trophy className="h-3 w-3 sm:h-4 sm:w-4" />
               <span className="font-bold">Score: {score}</span>
             </div>
 
             {streak > 0 && (
-              <div className="flex items-center gap-2 bg-orange-500/20 px-3 py-1 rounded-full animate-pulse">
-                <Zap className="h-4 w-4 text-orange-300" />
+              <div className="flex items-center gap-1 sm:gap-2 bg-orange-500/20 px-2 sm:px-3 py-1 rounded-full animate-pulse">
+                <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-orange-300" />
                 <span className="font-bold">{streak} Streak!</span>
               </div>
             )}
 
             {timerEnabled && (
-              <div className={`flex items-center gap-2 px-3 py-1 rounded-full font-bold ${
+              <div className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 rounded-full font-bold ${
                 timeLeft <= 10 ? 'bg-red-500 animate-pulse' : 'bg-white/10'
               }`}>
-                <Timer className="h-4 w-4" />
+                <Timer className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>{timeLeft}s</span>
               </div>
             )}
 
             {bestScore > 0 && (
-              <div className="flex items-center gap-2 bg-yellow-500/20 px-3 py-1 rounded-full">
-                <span className="text-yellow-300">🏆 Best: {bestScore}</span>
+              <div className="flex items-center gap-1 sm:gap-2 bg-yellow-500/20 px-2 sm:px-3 py-1 rounded-full">
+                <span className="text-yellow-300 text-xs sm:text-sm">🏆 Best: {bestScore}</span>
               </div>
             )}
           </div>
@@ -187,20 +187,20 @@ export default function GamePlay() {
       </header>
 
       {/* Game Content */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {timeLeft === 0 && timerEnabled ? (
-          <div className="text-center space-y-6 mt-12">
-            <h2 className="text-4xl font-bold text-foreground">Game Over!</h2>
-            <p className="text-2xl text-muted-foreground">Final Score: {score}</p>
+          <div className="text-center space-y-4 sm:space-y-6 mt-8 sm:mt-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Game Over!</h2>
+            <p className="text-xl sm:text-2xl text-muted-foreground">Final Score: {score}</p>
             {score > bestScore && (
-              <p className="text-xl text-yellow-600 font-bold">🎉 New High Score! 🎉</p>
+              <p className="text-lg sm:text-xl text-yellow-600 font-bold">🎉 New High Score! 🎉</p>
             )}
-            <div className="flex gap-4 justify-center">
-              <Button onClick={resetGame} size="lg" className="gap-2">
-                <Timer className="h-5 w-5" />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md mx-auto">
+              <Button onClick={resetGame} size="lg" className="gap-2 w-full sm:w-auto">
+                <Timer className="h-4 w-4 sm:h-5 sm:w-5" />
                 Play Again
               </Button>
-              <Button onClick={handleExit} variant="outline" size="lg">
+              <Button onClick={handleExit} variant="outline" size="lg" className="w-full sm:w-auto">
                 Back to Games
               </Button>
             </div>

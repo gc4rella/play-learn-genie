@@ -42,14 +42,14 @@ export function WordMath({ instance, onAnswer }: WordMathProps) {
       </div>
 
       {/* Options */}
-      <div className="grid grid-cols-4 gap-4 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto">
         {options.map((option) => (
           <Button
             key={option}
             onClick={() => onAnswer(option)}
             variant="outline"
             size="lg"
-            className="h-20 text-2xl font-bold hover:scale-110 transition-transform shadow-lg"
+            className="h-16 sm:h-20 text-xl sm:text-2xl font-bold hover:scale-105 active:scale-95 transition-transform shadow-lg touch-manipulation"
           >
             {option}
           </Button>

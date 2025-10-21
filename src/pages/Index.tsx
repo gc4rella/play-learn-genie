@@ -62,20 +62,20 @@ const Index = () => {
               <span className="font-semibold">AI-Powered Learning</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               Welcome to KidLearn! 🌟
             </h1>
-            
-            <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
+
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed">
               Discover amazing educational games designed just for you!
               Learn, play, and grow with fun activities.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4">
               <Button
                 variant="secondary"
                 size="lg"
-                className="text-lg font-bold"
+                className="text-base sm:text-lg font-bold w-full sm:w-auto touch-manipulation"
                 onClick={() => {
                   document.getElementById('games-section')?.scrollIntoView({
                     behavior: 'smooth'

@@ -47,23 +47,23 @@ const ageGroups = [
 
 export function AgeFilter({ selectedAge, onAgeSelect }: AgeFilterProps) {
   return (
-    <div className="flex flex-wrap gap-3 justify-center">
+    <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
       {ageGroups.map((group) => {
         const Icon = group.icon;
         const isSelected = selectedAge === group.value;
-        
+
         return (
           <Button
             key={group.value}
             onClick={() => onAgeSelect(group.value)}
             variant={isSelected ? "default" : "outline"}
             size="lg"
-            className="flex-col h-auto py-4 px-6 min-w-[140px]"
+            className="flex-col h-auto py-3 sm:py-4 px-4 sm:px-6 min-w-[120px] sm:min-w-[140px] touch-manipulation"
           >
-            <Icon className="h-6 w-6 mb-2" />
-            <span className="font-bold">{group.label}</span>
+            <Icon className="h-5 w-5 sm:h-6 sm:w-6 mb-1 sm:mb-2" />
+            <span className="font-bold text-sm sm:text-base">{group.label}</span>
             {group.subtitle && (
-              <span className="text-xs opacity-80 mt-1">{group.subtitle}</span>
+              <span className="text-xs opacity-80 mt-0.5 sm:mt-1">{group.subtitle}</span>
             )}
           </Button>
         );
