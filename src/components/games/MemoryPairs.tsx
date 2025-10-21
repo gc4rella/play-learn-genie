@@ -68,7 +68,7 @@ export function MemoryPairs({ instance, onAnswer }: MemoryPairsProps) {
 
     if (!isFlipped) {
       return (
-        <div className="w-full h-full flex items-center justify-center text-6xl">
+        <div className="w-full h-full flex items-center justify-center text-4xl sm:text-6xl">
           ?
         </div>
       );
@@ -77,18 +77,18 @@ export function MemoryPairs({ instance, onAnswer }: MemoryPairsProps) {
     if (card.type === "number") {
       return (
         <div className="w-full h-full flex items-center justify-center">
-          <span className="text-6xl font-bold text-accent">{card.value}</span>
+          <span className="text-4xl sm:text-6xl font-bold text-accent">{card.value}</span>
         </div>
       );
     } else {
       // Render dots
       const dotPositions = getDotPositions(card.value);
       return (
-        <div className="w-full h-full p-4 relative">
+        <div className="w-full h-full p-2 sm:p-4 relative">
           {dotPositions.map((pos, i) => (
             <div
               key={i}
-              className="absolute w-6 h-6 bg-accent rounded-full"
+              className="absolute w-4 h-4 sm:w-6 sm:h-6 bg-accent rounded-full"
               style={{ left: pos.x, top: pos.y }}
             />
           ))}
@@ -98,12 +98,12 @@ export function MemoryPairs({ instance, onAnswer }: MemoryPairsProps) {
   };
 
   return (
-    <Card className="p-8 bg-gradient-card space-y-6">
+    <Card className="p-4 sm:p-8 bg-gradient-card space-y-4 sm:space-y-6">
       <div className="text-center space-y-2">
-        <h2 className="text-3xl font-bold text-foreground">
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
           Memory Match!
         </h2>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-base sm:text-lg text-muted-foreground">
           Match numbers with their dot patterns
         </p>
         <p className="text-sm text-muted-foreground">
@@ -112,13 +112,13 @@ export function MemoryPairs({ instance, onAnswer }: MemoryPairsProps) {
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-4 gap-4 max-w-2xl mx-auto">
+      <div className="grid grid-cols-4 gap-2 sm:gap-4 max-w-lg sm:max-w-2xl mx-auto">
         {cards.map((card, index) => (
           <button
             key={card.id}
             onClick={() => handleCardClick(index)}
             disabled={matchedPairs.includes(index)}
-            className={`aspect-square rounded-xl border-4 transition-all transform hover:scale-105 ${
+            className={`aspect-square rounded-lg sm:rounded-xl border-2 sm:border-4 transition-all transform hover:scale-105 active:scale-95 touch-manipulation ${
               matchedPairs.includes(index)
                 ? "bg-green-500/20 border-green-500 scale-95 opacity-50"
                 : flippedCards.includes(index)

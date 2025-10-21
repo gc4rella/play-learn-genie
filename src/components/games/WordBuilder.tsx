@@ -36,12 +36,12 @@ export function WordBuilder({ instance, onAnswer }: WordBuilderProps) {
   };
 
   return (
-    <Card className="p-8 bg-gradient-card space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold text-foreground">
+    <Card className="p-4 sm:p-8 bg-gradient-card space-y-6 sm:space-y-8">
+      <div className="text-center space-y-3 sm:space-y-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
           Build the Word!
         </h2>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-base sm:text-lg text-muted-foreground">
           {hint}
         </p>
         <p className="text-sm text-muted-foreground">
@@ -50,15 +50,15 @@ export function WordBuilder({ instance, onAnswer }: WordBuilderProps) {
       </div>
 
       {/* Word Building Area */}
-      <div className="max-w-md mx-auto space-y-6">
+      <div className="max-w-md mx-auto space-y-4 sm:space-y-6">
         {/* Selected Letters */}
-        <div className="bg-primary/10 rounded-2xl p-6 border-4 border-primary min-h-[100px]">
+        <div className="bg-primary/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 sm:border-4 border-primary min-h-[80px] sm:min-h-[100px]">
           <div className="flex items-center justify-center gap-2 flex-wrap">
             {selectedLetters.map((letter, index) => (
               <button
                 key={index}
                 onClick={() => handleRemoveLetter(index)}
-                className="relative bg-accent text-accent-foreground w-16 h-16 rounded-xl text-3xl font-bold hover:bg-accent/80 transition-all shadow-lg group"
+                className="relative bg-accent text-accent-foreground w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl text-2xl sm:text-3xl font-bold hover:bg-accent/80 active:scale-95 transition-all shadow-lg group touch-manipulation"
               >
                 {letter}
                 <span className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -67,7 +67,7 @@ export function WordBuilder({ instance, onAnswer }: WordBuilderProps) {
               </button>
             ))}
             {selectedLetters.length === 0 && (
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-xs sm:text-sm">
                 Click letters below to build your word
               </p>
             )}
@@ -76,7 +76,7 @@ export function WordBuilder({ instance, onAnswer }: WordBuilderProps) {
 
         {/* Available Letters */}
         <div>
-          <p className="text-center text-sm text-muted-foreground mb-3">
+          <p className="text-center text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
             Available Letters:
           </p>
           <div className="flex items-center justify-center gap-2 flex-wrap">
@@ -84,7 +84,7 @@ export function WordBuilder({ instance, onAnswer }: WordBuilderProps) {
               <button
                 key={index}
                 onClick={() => handleLetterClick(letter, index)}
-                className="bg-background border-2 border-primary w-14 h-14 rounded-xl text-2xl font-bold hover:bg-primary hover:text-primary-foreground transition-all shadow-md hover:scale-110"
+                className="bg-background border-2 border-primary w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl text-xl sm:text-2xl font-bold hover:bg-primary hover:text-primary-foreground transition-all shadow-md hover:scale-105 active:scale-95 touch-manipulation"
               >
                 {letter}
               </button>
@@ -94,12 +94,13 @@ export function WordBuilder({ instance, onAnswer }: WordBuilderProps) {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex gap-4 justify-center">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md mx-auto">
         <Button
           onClick={handleReset}
           variant="outline"
           size="lg"
           disabled={selectedLetters.length === 0}
+          className="w-full sm:w-auto touch-manipulation"
         >
           Reset
         </Button>
@@ -107,7 +108,7 @@ export function WordBuilder({ instance, onAnswer }: WordBuilderProps) {
           onClick={handleSubmit}
           size="lg"
           disabled={selectedLetters.length !== wordLength}
-          className="text-xl px-12"
+          className="text-lg sm:text-xl px-8 sm:px-12 w-full sm:w-auto touch-manipulation"
         >
           Submit Word
         </Button>
