@@ -4,6 +4,28 @@ import { TapToCount } from "./TapToCount";
 import { QuickFacts } from "./QuickFacts";
 import { MiniSudoku } from "./MiniSudoku";
 import { MentalMath } from "./MentalMath";
+import { NumberLine } from "./NumberLine";
+import { MemoryPairs } from "./MemoryPairs";
+import { OddOrEven } from "./OddOrEven";
+import { EquationFix } from "./EquationFix";
+import { PatternRule } from "./PatternRule";
+import { VisualFractions } from "./VisualFractions";
+import { WordBuilder } from "./WordBuilder";
+import { ColorMix } from "./ColorMix";
+import { AnimalMatch } from "./AnimalMatch";
+import { MazeRunner } from "./MazeRunner";
+import { ClockMaster } from "./ClockMaster";
+import { MoneyCounter } from "./MoneyCounter";
+import { SpellingBee } from "./SpellingBee";
+import { SymmetryMirror } from "./SymmetryMirror";
+import { ShapeSorter } from "./ShapeSorter";
+import { ColorMatch } from "./ColorMatch";
+import { BigOrSmall } from "./BigOrSmall";
+import { SoundMatch } from "./SoundMatch";
+import { DecimalPlace } from "./DecimalPlace";
+import { FactorFinder } from "./FactorFinder";
+import { WordMath } from "./WordMath";
+import { PrimeTime } from "./PrimeTime";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
@@ -11,7 +33,7 @@ import { Trophy, Star } from "lucide-react";
 
 interface GameRouterProps {
   instance: GameInstance;
-  onComplete: () => void;
+  onComplete: (isCorrect?: boolean) => void;
   onExit: () => void;
 }
 
@@ -41,7 +63,7 @@ export function GameRouter({ instance, onComplete, onExit }: GameRouterProps) {
   };
 
   const handleContinue = () => {
-    onComplete();
+    onComplete(isCorrect ?? false);
   };
 
   if (showResult) {
@@ -92,16 +114,82 @@ export function GameRouter({ instance, onComplete, onExit }: GameRouterProps) {
   switch (instance.type) {
     case "tap-to-count":
       return <TapToCount instance={instance} onAnswer={handleAnswer} />;
-    
+
     case "quick-facts":
       return <QuickFacts instance={instance} onAnswer={handleAnswer} />;
-    
+
     case "mini-sudoku":
       return <MiniSudoku instance={instance} onComplete={handleAnswer} />;
-    
+
     case "mental-math":
       return <MentalMath instance={instance} onAnswer={handleAnswer} />;
-    
+
+    case "number-line":
+      return <NumberLine instance={instance} onAnswer={handleAnswer} />;
+
+    case "memory-pairs":
+      return <MemoryPairs instance={instance} onAnswer={handleAnswer} />;
+
+    case "odd-even":
+      return <OddOrEven instance={instance} onAnswer={handleAnswer} />;
+
+    case "equation-fix":
+      return <EquationFix instance={instance} onAnswer={handleAnswer} />;
+
+    case "pattern-rule":
+      return <PatternRule instance={instance} onAnswer={handleAnswer} />;
+
+    case "visual-fractions":
+      return <VisualFractions instance={instance} onAnswer={handleAnswer} />;
+
+    case "word-builder":
+      return <WordBuilder instance={instance} onAnswer={handleAnswer} />;
+
+    case "color-mix":
+      return <ColorMix instance={instance} onAnswer={handleAnswer} />;
+
+    case "animal-match":
+      return <AnimalMatch instance={instance} onAnswer={handleAnswer} />;
+
+    case "maze-runner":
+      return <MazeRunner instance={instance} onAnswer={handleAnswer} />;
+
+    case "clock-master":
+      return <ClockMaster instance={instance} onAnswer={handleAnswer} />;
+
+    case "money-counter":
+      return <MoneyCounter instance={instance} onAnswer={handleAnswer} />;
+
+    case "spelling-bee":
+      return <SpellingBee instance={instance} onAnswer={handleAnswer} />;
+
+    case "symmetry-mirror":
+      return <SymmetryMirror instance={instance} onAnswer={handleAnswer} />;
+
+    case "shape-sorter":
+      return <ShapeSorter instance={instance} onAnswer={handleAnswer} />;
+
+    case "color-match":
+      return <ColorMatch instance={instance} onAnswer={handleAnswer} />;
+
+    case "big-or-small":
+      return <BigOrSmall instance={instance} onAnswer={handleAnswer} />;
+
+    case "sound-match":
+      return <SoundMatch instance={instance} onAnswer={handleAnswer} />;
+
+    case "decimal-place":
+      return <DecimalPlace instance={instance} onAnswer={handleAnswer} />;
+
+    case "factor-finder":
+      return <FactorFinder instance={instance} onAnswer={handleAnswer} />;
+
+    case "word-math":
+      return <WordMath instance={instance} onAnswer={handleAnswer} />;
+
+    case "prime-time":
+      return <PrimeTime instance={instance} onAnswer={handleAnswer} />;
+
     default:
       return (
         <Card className="p-8 text-center">

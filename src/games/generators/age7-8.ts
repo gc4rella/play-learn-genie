@@ -106,16 +106,145 @@ export function generateVisualFractions(): GameInstance {
     { value: "1/4", shaded: 1, total: 4, name: "one quarter" },
     { value: "3/4", shaded: 3, total: 4, name: "three quarters" },
   ];
-  
+
   const selected = fractions[Math.floor(Math.random() * fractions.length)];
-  
+
   const options = fractions.map(f => f.value);
-  
+
   return {
     id: `fractions-${Date.now()}`,
     type: "visual-fractions",
     question: { shaded: selected.shaded, total: selected.total },
     correctAnswer: selected.value,
     options,
+  };
+}
+
+// Clock Master Generator
+export function generateClockMaster(): GameInstance {
+  const hours = Math.floor(Math.random() * 12) + 1; // 1-12
+  const minutes = Math.floor(Math.random() * 4) * 15; // 0, 15, 30, 45
+
+  const timeString = `${hours}:${minutes.toString().padStart(2, '0')}`;
+
+  return {
+    id: `clock-${Date.now()}`,
+    type: "clock-master",
+    question: {
+      hours,
+      minutes,
+      timeString,
+    },
+    correctAnswer: { hours, minutes },
+  };
+}
+
+// Money Counter Generator
+export function generateMoneyCounter(): GameInstance {
+  // Use simple coins: penny (1¢), nickel (5¢), dime (10¢), quarter (25¢)
+  const coinTypes = [
+    { name: "penny", value: 1, symbol: "1¢" },
+    { name: "nickel", value: 5, symbol: "5¢" },
+    { name: "dime", value: 10, symbol: "10¢" },
+    { name: "quarter", value: 25, symbol: "25¢" },
+  ];
+
+  // Generate a random set of coins
+  const coins: { name: string; value: number; symbol: string }[] = [];
+  const numCoins = Math.floor(Math.random() * 4) + 2; // 2-5 coins
+
+  let total = 0;
+  for (let i = 0; i < numCoins; i++) {
+    const coin = coinTypes[Math.floor(Math.random() * coinTypes.length)];
+    coins.push(coin);
+    total += coin.value;
+  }
+
+  // Generate distractor options
+  const options = [total];
+  while (options.length < 4) {
+    const distractor = total + Math.floor(Math.random() * 20) - 10;
+    if (distractor > 0 && !options.includes(distractor)) {
+      options.push(distractor);
+    }
+  }
+
+  options.sort(() => Math.random() - 0.5);
+
+  return {
+    id: `money-${Date.now()}`,
+    type: "money-counter",
+    question: { coins },
+    correctAnswer: total,
+    options,
+  };
+}
+
+// Spelling Bee Generator
+export function generateSpellingBee(): GameInstance {
+  const words = [
+    { word: "happy", audio: "hap-py", hint: "Feeling good and joyful" },
+    { word: "table", audio: "ta-ble", hint: "Furniture you eat on" },
+    { word: "apple", audio: "ap-ple", hint: "A red or green fruit" },
+    { word: "water", audio: "wa-ter", hint: "Clear liquid you drink" },
+    { word: "house", audio: "hou-se", hint: "A building where people live" },
+    { word: "tiger", audio: "ti-ger", hint: "A big striped cat" },
+    { word: "pizza", audio: "piz-za", hint: "Italian food with cheese" },
+    { word: "smile", audio: "smi-le", hint: "Expression when you're happy" },
+    { word: "clock", audio: "clo-ck", hint: "Tells you the time" },
+    { word: "plant", audio: "pla-nt", hint: "Green thing that grows" },
+  ];
+
+  const selected = words[Math.floor(Math.random() * words.length)];
+
+  // Generate scrambled letters with some extras
+  const correctLetters = selected.word.split("");
+  const extraLetters = "abcdefghijklmnopqrstuvwxyz".split("");
+  const randomExtras = extraLetters
+    .filter(l => !correctLetters.includes(l))
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3);
+
+  const allLetters = [...correctLetters, ...randomExtras].sort(() => Math.random() - 0.5);
+
+  return {
+    id: `spelling-${Date.now()}`,
+    type: "spelling-bee",
+    question: {
+      audio: selected.audio,
+      hint: selected.hint,
+      letters: allLetters,
+      wordLength: selected.word.length,
+    },
+    correctAnswer: selected.word,
+  };
+}
+
+// Symmetry Mirror Generator
+export function generateSymmetry(): GameInstance {
+  // Create a simple 4x4 grid with symmetry
+  const size = 4;
+  const grid: number[][] = Array(size).fill(0).map(() => Array(size).fill(0));
+
+  // Fill left half randomly
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < Math.floor(size / 2); x++) {
+      grid[y][x] = Math.random() > 0.5 ? 1 : 0;
+    }
+  }
+
+  // Create solution grid (complete symmetry)
+  const solution = grid.map(row => [...row]);
+  for (let y = 0; y < size; y++) {
+    for (let x = Math.floor(size / 2); x < size; x++) {
+      solution[y][x] = solution[y][size - 1 - x];
+    }
+  }
+
+  return {
+    id: `symmetry-${Date.now()}`,
+    type: "symmetry-mirror",
+    question: { grid, size },
+    correctAnswer: solution,
   };
 }

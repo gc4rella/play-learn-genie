@@ -95,3 +95,99 @@ export function generatePatternNext(): GameInstance {
     options,
   };
 }
+
+// Shape Sorter Generator
+export function generateShapeSorter(): GameInstance {
+  const shapes = [
+    { name: "circle", color: "#3B82F6" },
+    { name: "square", color: "#EF4444" },
+    { name: "triangle", color: "#22C55E" },
+    { name: "star", color: "#EAB308" },
+  ];
+
+  const targetShape = shapes[Math.floor(Math.random() * shapes.length)];
+  const options = shapes.map(s => s.name);
+
+  return {
+    id: `shape-sorter-${Date.now()}`,
+    type: "shape-sorter",
+    question: { targetShape: targetShape.name, targetColor: targetShape.color },
+    correctAnswer: targetShape.name,
+    options,
+  };
+}
+
+// Color Match Generator
+export function generateColorMatch(): GameInstance {
+  const colors = [
+    { name: "red", hex: "#EF4444", emoji: "🍎" },
+    { name: "blue", hex: "#3B82F6", emoji: "💙" },
+    { name: "yellow", hex: "#EAB308", emoji: "⭐" },
+    { name: "green", hex: "#22C55E", emoji: "🍀" },
+  ];
+
+  const targetColor = colors[Math.floor(Math.random() * colors.length)];
+  const options = colors.map(c => c.name);
+
+  return {
+    id: `color-match-${Date.now()}`,
+    type: "color-match",
+    question: {
+      targetColor: targetColor.name,
+      targetHex: targetColor.hex,
+      emoji: targetColor.emoji
+    },
+    correctAnswer: targetColor.name,
+    options,
+  };
+}
+
+// Big or Small Generator
+export function generateBigOrSmall(): GameInstance {
+  const items = [
+    { big: "elephant", small: "mouse", bigEmoji: "🐘", smallEmoji: "🐭" },
+    { big: "tree", small: "flower", bigEmoji: "🌳", smallEmoji: "🌸" },
+    { big: "car", small: "bike", bigEmoji: "🚗", smallEmoji: "🚲" },
+    { big: "moon", small: "star", bigEmoji: "🌙", smallEmoji: "⭐" },
+  ];
+
+  const selected = items[Math.floor(Math.random() * items.length)];
+  const askForBig = Math.random() > 0.5;
+
+  return {
+    id: `big-small-${Date.now()}`,
+    type: "big-or-small",
+    question: {
+      item1: selected.big,
+      item2: selected.small,
+      emoji1: selected.bigEmoji,
+      emoji2: selected.smallEmoji,
+      askFor: askForBig ? "big" : "small",
+    },
+    correctAnswer: askForBig ? selected.big : selected.small,
+  };
+}
+
+// Sound Match Generator (Simple version for 3-4 year olds)
+export function generateSoundMatch(): GameInstance {
+  const animals = [
+    { name: "dog", sound: "woof", emoji: "🐕" },
+    { name: "cat", sound: "meow", emoji: "🐈" },
+    { name: "cow", sound: "moo", emoji: "🐄" },
+    { name: "duck", sound: "quack", emoji: "🦆" },
+  ];
+
+  const selected = animals[Math.floor(Math.random() * animals.length)];
+  const options = animals.map(a => a.name);
+
+  return {
+    id: `sound-match-${Date.now()}`,
+    type: "sound-match",
+    question: {
+      sound: selected.sound,
+      emoji: selected.emoji,
+    },
+    correctAnswer: selected.name,
+    options,
+  };
+}

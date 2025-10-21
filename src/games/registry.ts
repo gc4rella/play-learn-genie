@@ -1,27 +1,37 @@
 import { MiniGame } from "@/types/game";
 import {
   generateTapToCount,
-  generateShapeMatch,
-  generateWhichIsMore,
-  generatePatternNext,
+  generateShapeSorter,
+  generateColorMatch,
+  generateBigOrSmall,
+  generateSoundMatch,
 } from "./generators/age3-4";
 import {
   generateNumberLine,
   generateQuickFacts,
   generateMemoryPairs,
   generateOddEven,
+  generateWordBuilder,
+  generateColorMix,
+  generateAnimalMatch,
+  generateMaze,
 } from "./generators/age5-6";
 import {
   generateMiniSudoku,
   generateEquationFix,
   generatePatternRule,
   generateVisualFractions,
+  generateClockMaster,
+  generateMoneyCounter,
+  generateSpellingBee,
+  generateSymmetry,
 } from "./generators/age7-8";
 import {
   generateMentalMath,
-  generateInequalities,
-  generateLogicGrid,
-  generateCoordinates,
+  generateDecimalPlace,
+  generateFactorFinder,
+  generateWordMath,
+  generatePrimeTime,
 } from "./generators/age9-10";
 
 export const MINI_GAMES: MiniGame[] = [
@@ -34,25 +44,32 @@ export const MINI_GAMES: MiniGame[] = [
     generator: generateTapToCount,
   },
   {
-    id: "shape-match",
-    name: "Shape Match",
+    id: "shape-sorter",
+    name: "Shape Sorter",
     ageRange: "3-4",
     description: "Match shapes to their outlines!",
-    generator: generateShapeMatch,
+    generator: generateShapeSorter,
   },
   {
-    id: "which-is-more",
-    name: "Which Is More?",
+    id: "color-match",
+    name: "Color Match",
     ageRange: "3-4",
-    description: "Pick the pile with more items!",
-    generator: generateWhichIsMore,
+    description: "Match objects by color!",
+    generator: generateColorMatch,
   },
   {
-    id: "pattern-next",
-    name: "Pattern Next",
+    id: "big-or-small",
+    name: "Big or Small",
     ageRange: "3-4",
-    description: "What comes next in the pattern?",
-    generator: generatePatternNext,
+    description: "Compare object sizes!",
+    generator: generateBigOrSmall,
+  },
+  {
+    id: "sound-match",
+    name: "Sound Match",
+    ageRange: "3-4",
+    description: "Match animals to their sounds!",
+    generator: generateSoundMatch,
   },
 
   // Ages 5-6
@@ -84,6 +101,34 @@ export const MINI_GAMES: MiniGame[] = [
     description: "Sort numbers into odd or even!",
     generator: generateOddEven,
   },
+  {
+    id: "word-builder",
+    name: "Word Builder",
+    ageRange: "5-6",
+    description: "Build words from letter tiles!",
+    generator: generateWordBuilder,
+  },
+  {
+    id: "color-mix",
+    name: "Color Mix Lab",
+    ageRange: "5-6",
+    description: "Mix colors to create new ones!",
+    generator: generateColorMix,
+  },
+  {
+    id: "animal-match",
+    name: "Animal Match",
+    ageRange: "5-6",
+    description: "Match animals with their sounds and homes!",
+    generator: generateAnimalMatch,
+  },
+  {
+    id: "maze-runner",
+    name: "Maze Runner",
+    ageRange: "5-6",
+    description: "Find the path through the maze!",
+    generator: generateMaze,
+  },
 
   // Ages 7-8
   {
@@ -114,6 +159,34 @@ export const MINI_GAMES: MiniGame[] = [
     description: "Identify the fraction shown!",
     generator: generateVisualFractions,
   },
+  {
+    id: "clock-master",
+    name: "Clock Master",
+    ageRange: "7-8",
+    description: "Learn to tell time on a clock!",
+    generator: generateClockMaster,
+  },
+  {
+    id: "money-counter",
+    name: "Money Counter",
+    ageRange: "7-8",
+    description: "Count coins and learn their values!",
+    generator: generateMoneyCounter,
+  },
+  {
+    id: "spelling-bee",
+    name: "Spelling Bee",
+    ageRange: "7-8",
+    description: "Spell words correctly from hints!",
+    generator: generateSpellingBee,
+  },
+  {
+    id: "symmetry-mirror",
+    name: "Symmetry Mirror",
+    ageRange: "7-8",
+    description: "Complete the symmetrical pattern!",
+    generator: generateSymmetry,
+  },
 
   // Ages 9-10
   {
@@ -124,25 +197,32 @@ export const MINI_GAMES: MiniGame[] = [
     generator: generateMentalMath,
   },
   {
-    id: "inequalities",
-    name: "Inequalities True or False",
+    id: "decimal-place",
+    name: "Decimal Place",
     ageRange: "9-10",
-    description: "Is the inequality true or false?",
-    generator: generateInequalities,
+    description: "Place decimals on number lines!",
+    generator: generateDecimalPlace,
   },
   {
-    id: "logic-grid",
-    name: "Logic Grid Mini",
+    id: "factor-finder",
+    name: "Factor Finder",
     ageRange: "9-10",
-    description: "Solve the logic puzzle!",
-    generator: generateLogicGrid,
+    description: "Find factors of numbers!",
+    generator: generateFactorFinder,
   },
   {
-    id: "coordinates",
-    name: "Coordinates Lite",
+    id: "word-math",
+    name: "Word Math",
     ageRange: "9-10",
-    description: "Find the point on the grid!",
-    generator: generateCoordinates,
+    description: "Solve word problems!",
+    generator: generateWordMath,
+  },
+  {
+    id: "prime-time",
+    name: "Prime Time",
+    ageRange: "9-10",
+    description: "Identify prime numbers!",
+    generator: generatePrimeTime,
   },
 ];
 

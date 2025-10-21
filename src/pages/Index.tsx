@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { GameCard, type Game } from "@/components/GameCard";
 import { AgeFilter, type AgeGroup } from "@/components/AgeFilter";
 import { AIGameGenerator } from "@/components/AIGameGenerator";
+import { Leaderboard } from "@/components/Leaderboard";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
 import { MINI_GAMES } from "@/games/registry";
@@ -71,18 +72,19 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button 
-                variant="secondary" 
+              <Button
+                variant="secondary"
                 size="lg"
                 className="text-lg font-bold"
                 onClick={() => {
-                  document.getElementById('games-section')?.scrollIntoView({ 
-                    behavior: 'smooth' 
+                  document.getElementById('games-section')?.scrollIntoView({
+                    behavior: 'smooth'
                   });
                 }}
               >
                 Explore Games
               </Button>
+              <Leaderboard />
               <AIGameGenerator />
             </div>
           </div>
